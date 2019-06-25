@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spellbook</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <button id="submit" >List spells</button>
+        <div id="results">
+
+        </div>
+
+
+
+        <script>
+        $('#submit').click(function () {
+            $.ajax({
+                url: 'http://localhost:8080/showspells',
+                type: "GET",
+
+                success: function(data) {
+                    $('#results').text(data);
+                }
+            });
+        });
+        </script>
+    </body>
+</html>
