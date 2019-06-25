@@ -6,21 +6,43 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     </head>
     <body>
-        <button id="submit" >List spells</button>
+        <button id="spellsButton">Spells</button>
         <div id="results">
-
+<!--            <ul id="spellsList"></ul>-->
         </div>
 
 
 
         <script>
-            $('#submit').click(function () {
+            $("#spellsButton").click(function (e) {
+
+
+                e.preventDefault();
                 $.ajax({
-                    url: 'http://localhost:8080/showspells',
-                    type: "GET",
+                    url: 'http://localhost:8080/spells',
+                    type: 'GET',
+                    contentType: "application/json",
 
                     success: function(data) {
-                        $('#results').text(data);
+                    console.log(data);
+                        // $("#results").append(data);
+
+                        var jsonStr = data;
+                        var jsonObj = JSON.parse(jsonStr);
+                        var jsonPretty = JSON.stringify(jsonObj, null, '\t');
+
+                        $("#results").text(jsonPretty);
+
+
+                        // $("#results").html(data).show();
+                        // $("#results").append(data);
+                    },
+
+                    error: function (result) {
+
+                        alert("Error accessing accounts!");
+
+                        console.log(result);
                     }
                 });
             });
