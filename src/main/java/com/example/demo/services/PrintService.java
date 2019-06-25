@@ -33,13 +33,20 @@ public class PrintService {
         Elements p = document.select("p");
         Elements ul = document.select("ul");
 
-        str += p.get(0).text() + "\n";
-        for(Element e : ul) {
-            str += e.text() + "\n";
-        }
-        for(int i = 1; i < p.size(); i++) {
-            str += p.get(i).text();
-        }
+        str +=  p.get(0).text() + "\n";
+        str += ul.get(0).text() + "\n";
+        str += ul.get(1).text() + "\n";
+        str += ul.get(2).text() + "\n";
+        str += ul.get(3).text() + "\n";
+        str +=  p.get(1).text() + "\n";
+        str +=  p.get(2).text() + "\n";
+
+//        for(Element e : ul) {
+//            str += e.text() + "\n";
+//        }
+//        for(int i = 1; i < p.size(); i++) {
+//            str += p.get(i).text();
+//        }
 
         return str;
 

@@ -14,16 +14,16 @@
 
 
         <script>
-        $('#submit').click(function () {
-            $.ajax({
-                url: 'http://localhost:8080/showspells',
-                type: "GET",
+            $('#submit').click(function () {
+                $.ajax({
+                    url: 'http://localhost:8080/showspells',
+                    type: "GET",
 
-                success: function(data) {
-                    $('#results').text(data);
-                }
+                    success: function(data) {
+                        $('#results').text(data);
+                    }
+                });
             });
-        });
         </script>
     </body>
 </html>

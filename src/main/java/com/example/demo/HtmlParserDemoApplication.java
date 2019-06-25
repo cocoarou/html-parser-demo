@@ -1,7 +1,11 @@
 package com.example.demo;
 
+import com.example.demo.models.Spell;
 import com.example.demo.services.FileWriter;
 import com.example.demo.services.PrintService;
+import com.example.demo.services.SpellService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -29,6 +33,9 @@ public class HtmlParserDemoApplication implements CommandLineRunner {
     @Autowired
     private PrintService printService;
 
+    @Autowired
+    private SpellService spellService;
+
     public static void main(String[] args) {
         SpringApplication.run(HtmlParserDemoApplication.class, args);
     }
@@ -36,10 +43,15 @@ public class HtmlParserDemoApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        String url = "";
+        String url = "Aiuto";
 
         Document doc = Jsoup.connect("https://dd-5e-italiano.fandom.com/it/wiki/Tutti_gli_Incantesimi").get();
         Document doc2 = Jsoup.connect("https://dd-5e-italiano.fandom.com/it/wiki/" + url).get();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Spell spell = spellService.setValuesById(doc2, "mw-content-text");
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        objectMapper.writeValue(new File("spell.json"), spell);
 
 
 //        fileWriter.write(doc, "table td a");
