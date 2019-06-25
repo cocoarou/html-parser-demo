@@ -1,8 +1,10 @@
 package com.example.demo;
 
 import com.example.demo.models.Spell;
+import com.example.demo.models.SpellBook;
 import com.example.demo.services.FileWriter;
 import com.example.demo.services.PrintService;
+import com.example.demo.services.SpellBookService;
 import com.example.demo.services.SpellService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -36,6 +38,9 @@ public class HtmlParserDemoApplication implements CommandLineRunner {
     @Autowired
     private SpellService spellService;
 
+    @Autowired
+    private SpellBookService spellBookService;
+
     public static void main(String[] args) {
         SpringApplication.run(HtmlParserDemoApplication.class, args);
     }
@@ -49,10 +54,14 @@ public class HtmlParserDemoApplication implements CommandLineRunner {
         Document doc2 = Jsoup.connect("https://dd-5e-italiano.fandom.com/it/wiki/" + url).get();
 
         ObjectMapper objectMapper = new ObjectMapper();
-        Spell spell = spellService.setValuesById(doc2, "mw-content-text");
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        objectMapper.writeValue(new File("spell.json"), spell);
 
+        Spell spell = spellService.setValuesById(doc2, "mw-content-text");
+        SpellBook spellBook = spellBookService.setValuesByCssQuery(doc, "table td a");
+
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+//        objectMapper.writeValue(new File("spell.json"), spell);
+//        objectMapper.writeValue(System.out, spell);
+        objectMapper.writeValue(System.out, spellBook);
 
 //        fileWriter.write(doc, "table td a");
 //        logger.info("" + printService.print(doc, "table td a"));
