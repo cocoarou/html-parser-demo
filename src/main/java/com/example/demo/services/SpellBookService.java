@@ -18,7 +18,7 @@ public class SpellBookService {
 
         Elements elements = doc.select(cssQuery);
         for(Element element : elements) {
-            spells.add(element.attr("title") + " " +  element.absUrl("href"));
+            spells.add(element.attr("title")/* + " " +  element.absUrl("href")*/);
         }
         spellBook.setSpells(spells);
 
