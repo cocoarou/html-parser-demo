@@ -23,7 +23,10 @@ public class SpellService {
         spell.setRange(ul.get(1).text());
         spell.setComponents(ul.get(2).text());
         spell.setDuration(ul.get(3).text());
-        spell.setDescription(p.get(1).text() + p.get(2).text());
+
+        for(Integer i = 1; i < p.size(); i++) {
+            spell.setDescription(p.get(i).text());
+        }
 
         return spell;
     }
