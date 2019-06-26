@@ -11,6 +11,7 @@ public class SpellService {
 
     public Spell setValuesById(Document doc, String id) {
         Spell spell = new Spell();
+        String str = "";
 
         String content = doc.getElementById(id).outerHtml();
         Document document = Jsoup.parse(content);
@@ -25,8 +26,10 @@ public class SpellService {
         spell.setDuration(ul.get(3).text());
 
         for(Integer i = 1; i < p.size(); i++) {
-            spell.setDescription(p.get(i).text());
+            str += p.get(i).text();
         }
+
+        spell.setDescription(str);
 
         return spell;
     }
