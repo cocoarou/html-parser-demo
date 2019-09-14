@@ -1,5 +1,10 @@
 package com.example.demo.services;
 
+import com.example.demo.models.Spell;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -41,14 +46,29 @@ public class PrintService {
         str +=  p.get(1).text() + "\n";
         str +=  p.get(2).text() + "\n";
 
-//        for(Element e : ul) {
-//            str += e.text() + "\n";
-//        }
-//        for(int i = 1; i < p.size(); i++) {
-//            str += p.get(i).text();
-//        }
-
         return str;
 
+    }
+
+    public String cleanJson(String json) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        JsonParser jp = new JsonParser();
+        JsonElement je = jp.parse(json);
+        return gson.toJson(je);
+    }
+
+    public String separateSpellDetails(Spell spell) {
+        String str = "";
+        String br = "</br>";
+        String ss = "";
+
+        str +=  spell.getSchool() + "</br>" +
+                spell.getCastTime() + "</br>" +
+                spell.getRange() + "</br>" +
+                spell.getComponents() + "</br>" +
+                spell.getDuration() + "</br>";
+        str +=  spell.getDescription().replace(".", "</br>");
+
+        return str;
     }
 }

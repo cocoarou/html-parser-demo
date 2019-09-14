@@ -46,7 +46,7 @@ public class SpellsController {
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
             String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
 
-            return json;
+            return printService.separateSpellDetails(s);
 
         } catch (IOException e) {
             e.printStackTrace();
