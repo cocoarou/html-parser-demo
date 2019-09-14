@@ -58,9 +58,7 @@ public class PrintService {
     }
 
     public String separateSpellDetails(Spell spell) {
-        String str = "";
-        String br = "</br>";
-        String ss = "";
+        String str = "<meta charset=\"UTF-8\" name=\"viewport\" content=\"width=device-width, initial-scale=1\"></br>";
 
         str +=  spell.getSchool() + "</br>" +
                 spell.getCastTime() + "</br>" +

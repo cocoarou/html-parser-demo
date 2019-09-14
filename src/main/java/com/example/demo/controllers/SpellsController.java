@@ -42,9 +42,9 @@ public class SpellsController {
 
             Spell s = spellService.setValuesById(doc, "mw-content-text");
 
-            DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
-            prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-            String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
+//            DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
+//            prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
+//            String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
 
             return printService.separateSpellDetails(s);
 
