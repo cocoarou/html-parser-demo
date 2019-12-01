@@ -32,3 +32,5 @@ build/
 /.mvn/
 /mvnw
 /mvnw.cmd
+/.~lock.fromJSON.csv#
+fromJSON.csv

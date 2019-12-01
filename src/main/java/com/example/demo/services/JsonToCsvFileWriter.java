@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.CSVWriter;
 import org.apache.commons.io.FileUtils;
 import org.json.CDL;
 import org.json.JSONArray;
@@ -9,8 +11,12 @@ import org.springframework.stereotype.Service;
 import org.w3c.tidy.EncodingUtils;
 
 import java.io.File;
+import java.io.FileReader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 @Service
@@ -50,5 +56,24 @@ public class JsonToCsvFileWriter {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private String prettyfyCsv(String csv) {
+        String prettyfiedCsv = "";
+//        TODO CSV file editing
+//        try {
+//            CSVReader reader = new CSVReader(new FileReader("old.csv"));
+//            CSVWriter writer = new CSVWriter(new FileWriter("new.csv"));
+//            String[] nextLine;
+//            while ((nextLine = reader.readNext()) != null) {
+//                List<String> lineAsList = new ArrayList<String>(Arrays.asList(nextLine));
+//                // Add stuff using linesAsList.add(index, newValue) as many times as you need.
+//                writer.writeNext(lineAsList.toArray());
+//            }
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
+
+        return prettyfiedCsv;
     }
 }
