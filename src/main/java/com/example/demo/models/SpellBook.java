@@ -22,10 +22,4 @@ public class SpellBook {
         this.spells = spells;
     }
 
-    @Override
-    public String toString() {
-        return "SpellBook{" +
-                "spells=" + spells +
-                '}';
-    }
 }
